@@ -1,7 +1,20 @@
-AWSTemplateFormatVersion: 2019-09-09
-Resorces:
+# Description of what this change includes
+#Invalid Template Version: The date 2019-09-09 does not exist in CloudFormation. The required valid string is 2010-09-09
+#Typo in Section Header: You wrote Resorces instead of Resources
+#Missing Colons in Type: AWS:S3:Bucket is missing the double colons. It must be AWS::S3::Bucket
+#Commented Out Resource Type: In the BucketPolicy section, the line defining the Type 
+#(#Type: 'AWS::S3::BucketPolicy') is commented out. The CloudFormation engine won't know what kind of resource to create
+# Revision number 001
+# Date 20250215
+
+
+
+
+
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
   S3Bucket:
-    Type: 'AWS:S3:Bucket'
+    Type: 'AWS::S3::Bucket'
     Properties:
       PublicAccessBlockConfiguration:
         BlockPublicAcls: false
@@ -13,8 +26,8 @@ Resorces:
         ErrorDocument: error.html
     DeletionPolicy: Retain
     UpdateReplacePolicy: Retain
-BucketPolicy:
-    #Type: 'AWS::S3::BucketPolicy'
+  BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
     Properties:
       PolicyDocument:
         Id: MyPolicy
